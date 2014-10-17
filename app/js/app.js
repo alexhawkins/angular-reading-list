@@ -6,6 +6,26 @@
         this.books = books;
         this.genres = genres;
         this.showForm = false;
+    })
+
+    .directive('bookGenres', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'partials/book-genres.html'
+        };
+    })
+
+    .directive('bookCover', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'partials/book-cover.html'
+        };
+    })
+    .directive('bookReview', function(){
+        return {
+            restrict: 'E',
+            templateUrl: 'partials/book-review.html'
+        };
     });
 
     var genres = ['fable', 'fantasy', 'fiction', 'folklore', 'horror', 'humor', 'legend', 'metafiction', 'mystery', 'mythology', 'non-fiction', 'poetry'];
