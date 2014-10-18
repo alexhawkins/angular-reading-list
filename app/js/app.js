@@ -18,7 +18,8 @@
     .directive('bookCover', function() {
         return {
             restrict: 'E',
-            templateUrl: 'partials/book-cover.html'
+            templateUrl: 'partials/book-cover.html',
+            replace: true
         };
     })
     .directive('bookReview', function(){
