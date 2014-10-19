@@ -106,7 +106,7 @@ label{
   padding: 0;
 }
 
-.button-from-hell button {
+.button-from-hell button{
   float: right;
 }
 
@@ -137,6 +137,10 @@ div.genre {
 .genre-label:active {
   border-color: #999;
   color: #222;
+}
+
+.label-space{
+  margin-right: 5px;
 }
 
 @media (max-width: 768px) {

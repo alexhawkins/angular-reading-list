@@ -1,5 +1,6 @@
 <form name="reviewForm" class="form-horizontal" ng-submit="reviewFormCtrl.addReview(reviewForm, reviewFormCtrl.book)">
 
+    <!-- LIVE PREVIEW SECTION -->
     <section class="row well live-preview" ng-show="reviewFormCtrl.book.isbn">
         <aside class="col-sm-3">
             <a href="http://www.amazon.com/gp/product/{{reviewFormCtrl.book.isbn}}">
@@ -18,14 +19,11 @@
 
             <p>{{reviewFormCtrl.book.review || "No review yet."}}</p>
 
-            <ul class="list-unstyled">
-                <li ng-repeat="(genre, state) in reviewFormCtrl.book.genres">
-                    <span class="label label-primary" ng-show="state">{{genre}}</span>
-                </li>
-            </ul>
+            <book-genres genres="reviewFormCtrl.book.genres"></book-genres>
         </div>
     </section>
 
+    <!-- REVIEW FORM -->
     <div class="input-container">
         <fieldset class="form-group">
             <label for="title" class="col-sm-2 control-label">Title:</label>
@@ -67,7 +65,7 @@
         <fieldset class="form-group">
             <label class="control-label col-sm-2">Genre:</label>
             <div class="genre">
-                <label ng-repeat="genre in genres" for="{{genre}}" class="genre-label form-control">
+                <label ng-repeat="genre in genres" for="{{genre}}" class="genre-label">
                     <input type="checkbox" name="genre" id="{{genre}}" ng-model="reviewFormCtrl.book.genres[genre]" />{{genre}}
                 </label>
             </div>

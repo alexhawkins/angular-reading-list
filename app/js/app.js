@@ -11,7 +11,10 @@
     .directive('bookGenres', function() {
         return {
             restrict: 'E',
-            templateUrl: 'partials/book-genres.html'
+            templateUrl: 'partials/book-genres.html',
+            scope: {
+                genres: '='
+            }
         };
     })
 
@@ -22,10 +25,39 @@
             replace: true
         };
     })
-    .directive('bookReview', function(){
+
+    .directive('bookReview', function() {
         return {
             restrict: 'E',
             templateUrl: 'partials/book-review.html'
+        };
+    })
+
+    .directive('reviewForm', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'partials/review-form.html',
+            replace: true,
+            controller: function() {
+                this.showForm = false;
+                this.book = {
+                    genres: {}
+                };
+
+                this.addReview = function(form) {
+                    console.log(arguments);
+                    books.push(this.book) //push to our books array
+                    this.book = {
+                        genres: {}
+                    };
+                    form.$setPristine();
+                }
+            },
+            controllerAs: 'reviewFormCtrl',
+            scope: {
+                books: '=',
+                genres: '='
+            }
         };
     });
 
@@ -39,7 +71,8 @@
         rating: 4,
         genres: {
             'non-fiction': true,
-            fantasy: true
+            fantasy: true,
+            horror: false
         }
     }, {
         title: 'HTML for Babies',
